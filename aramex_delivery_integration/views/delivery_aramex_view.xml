@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form_with_provider_aramex" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.aramex</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page string="Aramex Configuration" attrs="{'invisible': [('delivery_type', '!=', 'aramex')]}">
+                    <group>
+                        <group>
+                            <field name="aramex_username" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_password" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_account_number" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_account_pin" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_account_entity" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_account_city" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_country_code" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                            <field name="aramex_environment" attrs="{'required': [('delivery_type', '=', 'aramex')]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_delivery_carrier_form_with_provider_aramex_cities" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.aramex.cities</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page string="aramex Cities" attrs="{'invisible': [('delivery_type', '!=', 'aramex')]}">
+                    <button name="action_update_aramex_cities" class="oe_highlight" type="object"
+                            string="Update Aramex Cities"/>
+                    <sheet>
+                        <group>
+                            <field name="aramex_cities" readonly="1" nolabel="1" widget="one2many_list">
+                                <tree string="Aramex Cities">
+                                    <field name="name"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </group>
+                    </sheet>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

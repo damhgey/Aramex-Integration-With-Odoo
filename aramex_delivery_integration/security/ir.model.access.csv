@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aramex_city,aramex.city.manager,model_aramex_city,base.group_user,1,1,1,1
+access_aramex_shipments_to_send,aramex.shipment.to.send,model_aramex_shipments_to_send,base.group_user,1,1,1,1
+access_aramex_shipments_to_send_line,aramex.shipments.to.send.line,model_aramex_shipments_to_send_line,base.group_user,1,1,1,1

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="aramex_inherit_stock_picking_form" model="ir.ui.view">
+        <field name="name">aramex.inherit.stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath position="after" expr="//page[@name='note']">
+                <field name="is_shipment_registered" invisible="1"/>
+                <page name="shipment_tracking_information"
+                      string="Shipment Tracking Information"
+                      attrs="{'invisible': [('is_shipment_registered', '=', False)]}">
+                    <group>
+                        <field name="shipment_state"/>
+                        <field name="tracking_number"/>
+                        <field name="shipment_awb_url" widget="url"/>
+                        <field name="shipment_lable_url" widget="url"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="wizard_aramex_shipment_information_register_form" model="ir.ui.view">
+        <field name="name">Send Aramex Shipment Information</field>
+        <field name="model">aramex.shipments.to.send</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <form>
+                            <group>
+                                <field name="shipment_ids">
+                                    <tree string="Shipments" create="0" edit="1">
+                                        <field name="shipment_ref"/>
+                                        <field name="pack_id"/>
+                                        <field name="shipment_cod_value"/>
+                                        <field name="client_name"/>
+                                        <field name="client_phone1"/>
+                                        <field name="client_phone2"/>
+                                        <field name="client_city"/>
+                                        <field name="client_address"/>
+                                    </tree>
+                                    <form>
+                                        <group string="Shipment Information">
+                                            <field name="shipment_ref" readonly="1"/>
+                                            <field name="pack_id" readonly="1"/>
+                                            <field name="shipment_datetime" readonly="1"/>
+                                            <field name="shipment_product_group"/>
+                                            <field name="shipment_product_type"/>
+                                            <field name="shipment_payment_type"/>
+                                            <field name="shipment_cod_value"/>
+                                            <field name="shipment_cod_currency_code"/>
+                                            <field name="shipment_number_of_pieces"/>
+                                            <field name="shipment_dimension_length"/>
+                                            <field name="shipment_dimension_width"/>
+                                            <field name="shipment_dimension_height"/>
+                                            <field name="shipment_actual_weight_value"/>
+                                            <field name="shipment_actual_weight_unit"/>
+                                            <field name="shipment_description_of_goods"/>
+                                            <field name="shipment_goods_origin_country"/>
+                                            <field name="shipment_comments"/>
+                                            <field name="shipment_operation_instruction"/>
+                                        </group>
+                                        <!---->
+                                        <group string="Shipper Information">
+                                            <field name="shipper_contact_person_name" readonly="1"/>
+                                            <field name="shipper_contact_email_address" readonly="1"/>
+                                            <field name="shipper_contact_phone_number1" readonly="1"/>
+                                            <field name="shipper_contact_phone_number2" readonly="1"/>
+                                            <field name="shipper_contact_cell_phone" readonly="1"/>
+                                            <field name="shipper_account_number" readonly="1"/>
+                                            <field name="shipper_party_address_ine1" readonly="1"/>
+                                            <field name="shipper_party_address_city"/>
+                                            <field name="shipper_party_address_country_code" readonly="1"/>
+                                        </group>
+                                        <!---->
+                                        <group string="Client Information">
+                                            <field name="client_name"/>
+                                            <field name="client_phone1"/>
+                                            <field name="client_phone2"/>
+                                            <field name="client_address"/>
+                                            <field name="client_city"/>
+                                            <field name="client_email"/>
+                                            <field name="client_note"/>
+                                        </group>
+                                        <!---->
+                                    </form>
+                                </field>
+                            </group>
+                        </form>
+
+                    <footer>
+                        <button string="Send" type="object" name="send_shipment_to_aramex" class="oe_highlight"/>
+                        <button class="btn btn-secondary oe_button oe_form_button" special="cancel" string="Cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="aramex_shipment_information_send_action">
+        <field name="name">Send Aramex Shipments</field>
+        <field name="res_model">aramex.shipments.to.send</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="wizard_aramex_shipment_information_register_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
